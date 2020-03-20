@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import Login from "./auth/Login";
 import Home from "./home/Home";
 import RegisterForm from "./auth/RegisterForm";
-
+import StatCardsList from "./statCards/StatCardsList"
 
 const AppViews = props => {
   const hasUser = props.hasUser;
@@ -33,6 +33,17 @@ const AppViews = props => {
         path="/register"
         render={props => {
           return <RegisterForm setUser={setUser} {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/stats"
+        render={props => {
+          if (hasUser) {
+            return <StatCardsList/>;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
     </>

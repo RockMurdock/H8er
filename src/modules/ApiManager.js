@@ -1,11 +1,20 @@
 const apiURL = "http://localhost:5002/";
 
-
 const API = {
   getWithId(str, userId) {
     return fetch(apiURL + str + "?userId=" + userId).then(entries =>
       entries.json()
     );
+  },
+  getWithArmyId(str, armyTypeId) {
+    return fetch(apiURL + str +"/?armyTypeId=" + armyTypeId).then(entries =>
+      entries.json()
+    );
+  },
+  getSpecialRule(statCardId){
+    return fetch(apiURL + "statCardRules/?statCardId=" + statCardId + "&_expand=specialRule").then(entries =>
+        entries.json()
+      );
   },
   specialGetWithId(str, userId) {
     return fetch(apiURL + str + "/" + userId).then(entries => entries.json());
