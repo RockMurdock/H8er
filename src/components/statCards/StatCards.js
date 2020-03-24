@@ -6,17 +6,13 @@ import SpecialRule from "./SpecialRule";
 const StatCards = props => {
   const [specialRules, setSpecialRules] = useState([]);
 
-  const getSpecial = statCardId => {
-    return API.getSpecialRule(statCardId).then(specailRulesFromAPI => {
-      setSpecialRules(specailRulesFromAPI);
-    });
-  };
+  
 
   useEffect(() => {
     API.getSpecialRule(props.statCard.id).then(specailRulesFromAPI => {
       setSpecialRules(specailRulesFromAPI);
     });
-  }, []);
+  },[props.statCard.id])
 var totalPoints = (props.statCard.pointsPerModel*props.statCard.unitSize)
   return (
     <div className="statCards-content">
@@ -40,7 +36,7 @@ var totalPoints = (props.statCard.pointsPerModel*props.statCard.unitSize)
                 <th>US</th>
               </tr>
               <tr>
-  <td>{totalPoints}</td>
+                <td>{totalPoints}</td>
                 <td>{props.statCard.pointsPerModel}</td>
                 <td>{props.statCard.name}</td>
                 <td>{props.statCard.movement}</td>
@@ -66,6 +62,24 @@ var totalPoints = (props.statCard.pointsPerModel*props.statCard.unitSize)
             ))}
           </span>
         </div>
+        <button
+          type="button" className="statCardEditButton"
+          onClick={() => props.history.push(`/stats/${props.statCard.id}/edit-stat`)}
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          onClick={() => props.deletehandler(props.statCard.id, "statCards")}
+        >
+          Delete
+        </button>
+        <button
+          type="button" className="specialRuleAddButton"
+          onClick={() => props.history.push(`/stats/${props.statCard.id}/add-rule`)}
+        >
+          Add Rule
+        </button>
       </div>
     </div>
   );

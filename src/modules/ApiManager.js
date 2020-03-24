@@ -52,6 +52,16 @@ const API = {
     return fetch(`${apiURL}${str}/?_expand=${toExpand}`).then(entries =>
       entries.json()
     );
+  },
+  embed(str, toExpand, id) {
+    return fetch(`${apiURL}${str}/${id}/?_embed=${toExpand}`).then(entries =>
+      entries.json()
+    );
+  },
+  specialWithArmyType(str, armyTypeId) {
+    return fetch(`${apiURL}${str}/?armyTypeId=${armyTypeId}`).then(entries =>
+      entries.json()
+    );
   }
 };
 export default API;
