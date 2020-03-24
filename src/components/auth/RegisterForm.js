@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import API from "../../modules/ApiManager";
-import { Route, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const RegisterForm = props => {
   const [credentials, setCredentials] = useState({
     username: "",
     email: ""
-  }); //initial state equal to an object with keys email and password that have empty string value
+  }); //initial state equal to an object with keys email and username that have empty string value
 
   const handleFieldChange = evt => {
     const stateToChange = { ...credentials };

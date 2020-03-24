@@ -22,11 +22,21 @@ const NavBar = props => {
             </Link>
           </li>
           <li>
+            <Link
+              className="nav-link"
+              style={{ textDecoration: "none", color: "#160D58" }}
+              to="/stats"
+            >
+              Stat Cards
+            </Link>
+          </li>
+          <li>
             <span className="nav-link" onClick={handleLogout}>
               {" "}
               Logout{" "}
             </span>
           </li>
+          
         </ul>
       ) : null}
     </nav>

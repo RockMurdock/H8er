@@ -4,8 +4,8 @@ import { Link } from "react-router-dom"
 
 
 const Login = props => {
-  const [credentials, setCredentials] = useState({email: "", username: "" }); //initial state equal to an object with keys email and password that have empty string value
-  //handleFieldChange handles each state update and targets the values of email and password
+  const [credentials, setCredentials] = useState({email: "", username: "" }); //initial state equal to an object with keys email and username that have empty string value
+  //handleFieldChange handles each state update and targets the values of email and username
 
   const handleFieldChange = evt => {
     //a variable which takes in email and username
