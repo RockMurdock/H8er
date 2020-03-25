@@ -35,7 +35,7 @@ const SpecialRuleEditForm = props => {
             setIsLoading(false);
         })
     });
-  }, []);
+  }, [props.match.params.specialRuleId]);
 
   return (
     <>

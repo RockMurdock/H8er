@@ -61,7 +61,7 @@ const StatCardEditForm = props => {
         });
       });
     });
-  }, []);
+  }, [props.match.params.statCardId]);
 
   return (
     <>

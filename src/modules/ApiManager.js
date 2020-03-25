@@ -53,7 +53,12 @@ const API = {
       entries.json()
     );
   },
-  embed(str, toExpand, id) {
+  embed(str, toExpand) {
+    return fetch(`${apiURL}${str}/?_embed=${toExpand}`).then(entries =>
+      entries.json()
+    );
+  },
+  embedWithId(str, toExpand, id) {
     return fetch(`${apiURL}${str}/${id}/?_embed=${toExpand}`).then(entries =>
       entries.json()
     );
@@ -62,6 +67,11 @@ const API = {
     return fetch(`${apiURL}${str}/?armyTypeId=${armyTypeId}`).then(entries =>
       entries.json()
     );
+  },
+  getStatCardsWithArmyId(armyId) {
+      return fetch(`${apiURL}armyStatCards/?armyId=${armyId}&_expand=statCard`).then(entries =>
+        entries.json()
+      )
   }
 };
 export default API;

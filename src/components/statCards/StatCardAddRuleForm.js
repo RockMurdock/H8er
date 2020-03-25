@@ -19,7 +19,6 @@ const StatCardAddRuleForm = props => {
     setIsLoading(true);
     statCardRules.statCardId = parseFloat(props.match.params.statCardId);
     statCardRules.specialRuleId= parseFloat(statCardRules.specialRuleId)
-    console.log(statCardRules)
 
     API.save(statCardRules, "statCardRules").then(() =>
       props.history.push("/stats")
@@ -28,14 +27,14 @@ const StatCardAddRuleForm = props => {
   
 
   useEffect(() => {
-    API.embed("statCards","statCardRules",props.match.params.statCardId).then(result => {
+    API.embedWithId("statCards","statCardRules",props.match.params.statCardId).then(result => {
         API.specialWithArmyType("specialRules",result.armyTypeId).then(rules => {
             setSpecialRules(rules)
 
             setIsLoading(false);
         });
     });
-  }, []);
+  }, [props.match.params.statCardId]);
   
 
   return (

@@ -9,6 +9,10 @@ import StatCardEditForm from "./statCards/StatCardEditForm";
 import SpecialRuleForm from "./statCards/SpecialRuleForm"
 import SpecialRuleEditForm from "./statCards/SpecialRuleEditForm"
 import StatCardAddRuleForm from "./statCards/StatCardAddRuleForm";
+import ArmyListList from "./armyLists/ArmyListList"
+import ArmyListForm from "./armyLists/ArmyListForm"
+import ArmyListEditForm from "./armyLists/ArmyListEditForm";
+import ArmyListAddStatForm from "./armyLists/ArmyListAddStatForm"
 
 const AppViews = props => {
   const hasUser = props.hasUser;
@@ -101,6 +105,50 @@ const AppViews = props => {
         render={props => {
           if (hasUser) {
             return <StatCardAddRuleForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/army-lists"
+        render={props => {
+          if (hasUser) {
+            return <ArmyListList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/army-lists/new"
+        render={props => {
+          if (hasUser) {
+            return <ArmyListForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/army-lists/:armyListId(\d+)/edit-armycard"
+        render={props => {
+          if (hasUser) {
+            return <ArmyListEditForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+        <Route
+        exact
+        path="/army-lists/:armyListId(\d+)/edit-armylist"
+        render={props => {
+          if (hasUser) {
+            return <ArmyListAddStatForm {...props} />;
           } else {
             return <Redirect to="/login" />;
           }
