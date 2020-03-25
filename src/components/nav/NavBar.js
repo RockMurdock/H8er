@@ -25,6 +25,15 @@ const NavBar = props => {
             <Link
               className="nav-link"
               style={{ textDecoration: "none", color: "#160D58" }}
+              to="/army-lists"
+            >
+              Army Lists
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="nav-link"
+              style={{ textDecoration: "none", color: "#160D58" }}
               to="/stats"
             >
               Stat Cards
