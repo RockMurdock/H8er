@@ -22,6 +22,7 @@ const ArmyListList = props => {
       }
     );
   }, []);
+
   return (
     <div>
       <div>
