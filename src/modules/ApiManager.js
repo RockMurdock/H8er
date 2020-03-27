@@ -72,6 +72,15 @@ const API = {
       return fetch(`${apiURL}armyStatCards/?armyId=${armyId}&_expand=statCard`).then(entries =>
         entries.json()
       )
+  },
+  getRuleDescription(specialRuleId) {
+    return fetch(`${apiURL}specialRules/?id=${specialRuleId}`).then(entries =>
+      entries.json()
+    )
+  },
+  getRulesByStatCard(statCardId){
+    return fetch(`${apiURL}statCardRules/?statCardId=${statCardId}&_expand=specialRule`).then(entries =>
+      entries.json())
   }
 };
 export default API;

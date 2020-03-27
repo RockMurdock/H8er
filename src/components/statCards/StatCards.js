@@ -78,7 +78,7 @@ var totalPoints = (props.statCard.pointsPerModel*props.statCard.unitSize)
           type="button" className="specialRuleAddButton"
           onClick={() => props.history.push(`/stats/${props.statCard.id}/add-rule`)}
         >
-          Add Rule
+          Add/Remove Rule
         </button>
       </div>
     </div>

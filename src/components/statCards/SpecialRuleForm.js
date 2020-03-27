@@ -42,6 +42,7 @@ const SpecialRuleForm = props => {
             value={specialRule.armyTypeId}
             onChange={handleFieldChange}
           >
+              
             {armyTypes.map(armyType => (
               <option key={armyType.id} value={armyType.id}>
                 {armyType.name}
