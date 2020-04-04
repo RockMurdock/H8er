@@ -19,10 +19,18 @@ const SpecialRuleForm = props => {
     evt.preventDefault();
     setIsLoading(true);
     specialRule.armyTypeId = parseFloat(specialRule.armyTypeId);
-
-    API.save(specialRule, "specialRules").then(() =>
-      props.history.push("/stats")
-    );
+    if (
+      specialRule.armyTypeId === 0 ||
+      specialRule.name === "" ||
+      specialRule.description === ""
+    ) {
+      window.alert("please fill out all fields and select valid option");
+      setIsLoading(false);
+    } else {
+      API.save(specialRule, "specialRules").then(() =>
+        props.history.push("/stats")
+      );
+    }
   };
   useEffect(() => {
     API.get("armyTypes").then(armyType => {
@@ -42,7 +50,7 @@ const SpecialRuleForm = props => {
             value={specialRule.armyTypeId}
             onChange={handleFieldChange}
           >
-              
+            <option value={0}>select option</option>
             {armyTypes.map(armyType => (
               <option key={armyType.id} value={armyType.id}>
                 {armyType.name}
@@ -68,7 +76,6 @@ const SpecialRuleForm = props => {
                 <th>Description</th>
                 <td>
                   <textarea
-                    
                     required
                     onChange={handleFieldChange}
                     id="description"
