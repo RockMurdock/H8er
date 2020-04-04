@@ -16,9 +16,6 @@ const API = {
         entries.json()
       );
   },
-  specialGetWithId(str, userId) {
-    return fetch(apiURL + str + "/" + userId).then(entries => entries.json());
-  },
   get(str) {
     return fetch(apiURL + str).then(entries => entries.json());
   },

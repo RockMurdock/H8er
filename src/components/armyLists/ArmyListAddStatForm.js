@@ -8,7 +8,7 @@ const ArmyListAddStatForm = props => {
     armyId: 0
   });
   const [cardToDelete, setCardToDelete] = useState({
-    id:0
+    id: 0
   });
   const [currentArmyStatCards, setCurrentArmyStatCards] = useState([]);
   const [statCards, setStatCards] = useState([]);
@@ -31,10 +31,15 @@ const ArmyListAddStatForm = props => {
     armyStatCards.armyId = parseFloat(props.match.params.armyListId);
 
     API.save(armyStatCards, "armyStatCards").then(() =>
-      props.history.push("/army-lists")
+      API.getStatCardsWithArmyId(props.match.params.armyListId).then(
+        statCardsFromAPI => {
+          setCurrentArmyStatCards(statCardsFromAPI);
+        }
+      )
     );
+    setIsLoading(false)
   };
-  const deletehandler = (evt) => {
+  const deletehandler = evt => {
     evt.preventDefault();
     API.delete(cardToDelete.id, "armyStatCards").then(() =>
       API.getStatCardsWithArmyId(props.match.params.armyListId).then(
@@ -64,7 +69,7 @@ const ArmyListAddStatForm = props => {
       }
     );
   }, [props.match.params.armyListId]);
-  
+
   return (
     <>
       <div className="statCards-content">
@@ -76,9 +81,11 @@ const ArmyListAddStatForm = props => {
             value={armyStatCards.id}
             onChange={handleFieldChange}
           >
+            <option value={0}>select option</option>
             {statCards.map(statCard => (
               <option key={statCard.id} value={statCard.id}>
-                {statCard.name}{statCard.unitSize}
+                {statCard.name}
+                {statCard.unitSize}
               </option>
             ))}
           </select>
@@ -99,9 +106,11 @@ const ArmyListAddStatForm = props => {
             value={currentArmyStatCards.id}
             onChange={handleFieldChangeToRemove}
           >
+            <option value={0}>select option</option>
             {currentArmyStatCards.map(statCard => (
               <option key={statCard.id} value={statCard.id}>
-                {statCard.statCard.name}{statCard.statCard.unitSize}
+                {statCard.statCard.name}
+                {statCard.statCard.unitSize}
               </option>
             ))}
           </select>

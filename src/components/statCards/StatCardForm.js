@@ -6,7 +6,7 @@ const StatCardForm = props => {
     name: "",
     unitTypeId: 0,
     armyTypeId: 0,
-    pointsPerModel:0,
+    pointsPerModel: 0,
     unitSize: 0,
     movement: 0,
     weaponSkill: 0,
@@ -30,21 +30,26 @@ const StatCardForm = props => {
   const constructNewStatCard = evt => {
     evt.preventDefault();
     setIsLoading(true);
-    statCard.unitTypeId = parseFloat(statCard.unitTypeId)
-    statCard.armyTypeId = parseFloat(statCard.armyTypeId)
-    statCard.pointsPerModel = parseFloat(statCard.pointsPerModel)
-    statCard.unitSize = parseFloat(statCard.unitSize)
-    statCard.movement = parseFloat(statCard.movement)
-    statCard.weaponSkill = parseFloat(statCard.weaponSkill)
-    statCard.ballisticSkill = parseFloat(statCard.ballisticSkill)
-    statCard.strength = parseFloat(statCard.strength)
-    statCard.toughness = parseFloat(statCard.toughness)
-    statCard.wounds = parseFloat(statCard.wounds)
-    statCard.initiative = parseFloat(statCard.initiative)
-    statCard.attacks = parseFloat(statCard.attacks)
-    statCard.leadership = parseFloat(statCard.leadership)
+    statCard.unitTypeId = parseFloat(statCard.unitTypeId);
+    statCard.armyTypeId = parseFloat(statCard.armyTypeId);
+    statCard.pointsPerModel = parseFloat(statCard.pointsPerModel);
+    statCard.unitSize = parseFloat(statCard.unitSize);
+    statCard.movement = parseFloat(statCard.movement);
+    statCard.weaponSkill = parseFloat(statCard.weaponSkill);
+    statCard.ballisticSkill = parseFloat(statCard.ballisticSkill);
+    statCard.strength = parseFloat(statCard.strength);
+    statCard.toughness = parseFloat(statCard.toughness);
+    statCard.wounds = parseFloat(statCard.wounds);
+    statCard.initiative = parseFloat(statCard.initiative);
+    statCard.attacks = parseFloat(statCard.attacks);
+    statCard.leadership = parseFloat(statCard.leadership);
 
+    if (statCard.armyTypeId === 0 || statCard.armyTypeId === 0 || statCard.name === ""){
+      window.alert("please choose a valid option")
+      setIsLoading(false)
+    } else {
     API.save(statCard, "statCards").then(() => props.history.push("/stats"));
+    }
   };
   useEffect(() => {
     API.get("unitTypes").then(unitType => {
@@ -67,6 +72,7 @@ const StatCardForm = props => {
             value={statCard.armyTypeId}
             onChange={handleFieldChange}
           >
+            <option value={0}>select option</option>
             {armyTypes.map(armyType => (
               <option key={armyType.id} value={armyType.id}>
                 {armyType.name}
@@ -80,6 +86,7 @@ const StatCardForm = props => {
             value={statCard.unitTypeId}
             onChange={handleFieldChange}
           >
+            <option value={0}>select option</option>
             {unitTypes.map(unitType => (
               <option key={unitType.id} value={unitType.id}>
                 {unitType.name}

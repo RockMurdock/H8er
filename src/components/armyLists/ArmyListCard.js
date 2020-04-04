@@ -1,9 +1,10 @@
 import React from "react";
-
+import {Link} from "react-router-dom"
 const ArmyListCard = props => {
   return (
     <h4>
-      {props.armyList.name} {props.armyList.maxPoints}
+      <Link to={`/army-lists/${props.armyList.id}/detail`}>
+      {props.armyList.name}</Link> {props.armyList.maxPoints}
       <button
         type="button"
         className="armyListEditButton"
@@ -26,7 +27,7 @@ const ArmyListCard = props => {
           props.history.push(`/army-lists/${props.armyList.id}/edit-armylist`)
         }
       >
-        Add/Remove Units
+        Add/Remove Stat Cards
       </button>
     </h4>
   );

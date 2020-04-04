@@ -12,15 +12,7 @@ const NavBar = props => {
     <nav>
       {props.hasUser ? (
         <ul className="navList">
-          <li>
-            <Link
-              className="nav-link"
-              style={{ textDecoration: "none", color: "#160D58" }}
-              to="/home"
-            >
-              Home
-            </Link>
-          </li>
+          
           <li>
             <Link
               className="nav-link"

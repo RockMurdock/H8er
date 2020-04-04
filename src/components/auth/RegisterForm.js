@@ -25,7 +25,7 @@ const RegisterForm = props => {
           const newUser = users.find(newUser => newUser.email === credentials.email);
           sessionStorage.setItem("userId", newUser.id);
           props.setUser(credentials);
-          props.history.push("/home");
+          props.history.push("/army-lists");
         });
       } else {
         window.alert("email already exists");

@@ -78,8 +78,6 @@ const StatCardAddRuleForm = props => {
       setRulesOnStatCard(rules);
     });
   }, [props.match.params.statCardId]);
-  console.log(cardToDelete);
-  console.log(rulesOnStatCard)
   return (
     <>
       <div className="specialRules-content">

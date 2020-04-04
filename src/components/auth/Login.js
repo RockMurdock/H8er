@@ -22,7 +22,7 @@ const Login = props => {
           if (user !== undefined) {
             sessionStorage.setItem("userId", user.id)
             props.setUser(credentials)
-            props.history.push("/home")
+            props.history.push("/army-lists")
           } else {
             window.alert("try again")
           }

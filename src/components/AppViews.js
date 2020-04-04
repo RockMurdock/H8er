@@ -14,6 +14,7 @@ import ArmyListForm from "./armyLists/ArmyListForm"
 import ArmyListEditForm from "./armyLists/ArmyListEditForm";
 import ArmyListAddStatForm from "./armyLists/ArmyListAddStatForm"
 import SpecialRuleDetail from "./statCards/SpecialRuleDetail";
+import ArmyListDetail from "./armyLists/ArmyListDetail";
 
 const AppViews = props => {
   const hasUser = props.hasUser;
@@ -161,6 +162,17 @@ const AppViews = props => {
         render={props => {
           if (hasUser) {
             return <ArmyListAddStatForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        exact
+        path="/army-lists/:id(\d+)/detail"
+        render={props => {
+          if (hasUser) {
+            return <ArmyListDetail {...props} />;
           } else {
             return <Redirect to="/login" />;
           }

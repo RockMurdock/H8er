@@ -23,8 +23,12 @@ const ArmyListForm = props => {
     armyList.userId = parseFloat(sessionStorage.getItem("userId"));
     armyList.armyTypeId = parseFloat(armyList.armyTypeId);
     armyList.maxPoints = parseFloat(armyList.maxPoints);
-
+if(armyList.armyTypeId === 0 || armyList.name === "" || armyList.maxPoints === 0){
+  window.alert("please fill out all fields and select valid option")
+  setIsLoading(false)
+} else {
     API.save(armyList, "armies").then(() => props.history.push("/army-lists"));
+}
   };
   useEffect(() => {
     API.get("armyTypes").then(armyType => {
@@ -44,6 +48,7 @@ const ArmyListForm = props => {
             value={armyList.armyTypeId}
             onChange={handleFieldChange}
           >
+            <option value={0}>select option</option>
             {armyTypes.map(armyType => (
               <option key={armyType.id} value={armyType.id}>
                 {armyType.name}
