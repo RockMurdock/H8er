@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Login from "./auth/Login";
-import Home from "./home/Home";
 import RegisterForm from "./auth/RegisterForm";
 import StatCardsList from "./statCards/StatCardsList";
 import StatCardForm from "./statCards/StatCardForm";
@@ -27,17 +26,6 @@ const AppViews = props => {
         path="/login"
         render={props => {
           return <Login setUser={setUser} {...props} />;
-        }}
-      />
-      <Route
-        exact
-        path="/home"
-        render={props => {
-          if (hasUser) {
-            return <Home {...props} />;
-          } else {
-            return <Redirect to="/login" />;
-          }
         }}
       />
       <Route
