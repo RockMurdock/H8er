@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import API from "../../modules/ApiManager";
 import { Link } from "react-router-dom"
+import {Button, Input, InputGroup, InputGroupAddon, InputGroupText, Form} from 'reactstrap'
 
 const RegisterForm = props => {
   const [credentials, setCredentials] = useState({
@@ -37,33 +38,47 @@ const RegisterForm = props => {
     <>
     <div className="loginForm">
       <div>
+        <center>
+          <br/>
+          <Form style={{width:"50%", border:"solid 1px", padding:"5px"}}>
         <h3>Sign up</h3>
-        <label htmlFor="inputName">Username:</label>
-        <input
+        <br/>
+        <InputGroup>
+        <InputGroupAddon addonType="prepend">
+        <InputGroupText>Username:</InputGroupText>
+        </InputGroupAddon>
+        <Input
           onChange={handleFieldChange}
           type="username"
           id="username"
           placeholder="username"
-        ></input>
-  
-        <label htmlFor="inputEmail">Email Address:</label>
-        <input
+        ></Input>
+        </InputGroup>
+        <br/>
+        <InputGroup>
+        <InputGroupAddon addonType="prepend">
+        <InputGroupText>Email Address:</InputGroupText>
+        </InputGroupAddon>
+        <Input
           onChange={handleFieldChange}
           type="email"
           id="email"
           placeholder="email address"
-        ></input>
-       
-          <button type="button" onClick={handleRegister}>
+        ></Input>
+       </InputGroup>
+       <br/>
+          <Button type="button" onClick={handleRegister}>
             Submit
-          </button>
-        
+          </Button>
+        <p>
         Already a user? <span></span>
         <Link to="/login"  className="signLink" style={{ textDecoration: 'none'}} >
             
             Click here
           </Link>
-       
+          </p>
+          </Form>
+          </center>
       </div>
       </div>
     </>

@@ -1,24 +1,42 @@
 import React from "react";
+import { Button, ButtonGroup, Card, CardBody, CardHeader, CardText } from "reactstrap";
 
 const SpecialRuleCards = props => {
-    
   return (
-    <div className="specialRulesCard-content">
-      <span>{props.specialRule.name}</span>
-      <button
-        type="button"
-        className="specialRulesCardEditButton"
-        onClick={() => props.history.push(`/stats/${props.specialRule.id}/edit-rule`)}
-      >
-        Edit
-      </button>
-      <button
-        type="button"
-        className="specialRulesCardDeleteButton"
-        onClick={() => props.deletehandler(props.specialRule.id, "specialRules")}
-      >
-        Delete
-      </button>
+    <div
+      className="specialRulesCard-content"
+      style={{ flexGrow: "auto", overflow: "auto" }}
+    >
+      <Card style={{ margin: "5px", width:"350px" }}>
+        <CardHeader style={{ textAlign: "center", fontWeight: "bolder" }}>
+          {props.specialRule.name}
+        </CardHeader>
+        <CardBody>
+          <CardText style={{width:"300px"}}>{props.specialRule.description}</CardText>
+          <ButtonGroup>
+            <Button
+              size="sm"
+              type="button"
+              className="specialRulesCardEditButton"
+              onClick={() =>
+                props.history.push(`/stats/${props.specialRule.id}/edit-rule`)
+              }
+            >
+              Edit
+            </Button>
+            <Button
+              size="sm"
+              type="button"
+              className="specialRulesCardDeleteButton"
+              onClick={() =>
+                props.deletehandler(props.specialRule.id, "specialRules")
+              }
+            >
+              Delete
+            </Button>
+          </ButtonGroup>
+        </CardBody>
+      </Card>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../../modules/ApiManager";
 import StatCards from "../statCards/StatCards";
+import {Button, Input, Form, InputGroup, InputGroupAddon,InputGroupText, CardGroup} from "reactstrap"
 
 const ArmyListAddStatForm = props => {
   const [armyStatCards, setArmyStatCards] = useState({
@@ -50,6 +51,12 @@ const ArmyListAddStatForm = props => {
     );
   };
 
+  const sum = currentArmyStatCards.map(statCard =>{
+    const total =+ (statCard.statCard.unitSize * statCard.statCard.pointsPerModel)
+    return total
+   })
+   const totalPoints = sum.reduce(function(a,b) {return a + b}, 0)
+
   useEffect(() => {
     API.embedWithId(
       "armies",
@@ -73,9 +80,15 @@ const ArmyListAddStatForm = props => {
   return (
     <>
       <div className="statCards-content">
-        <div>
-          <label htmlFor="armyType">Stat Cards</label>
-          <select
+        <br/>
+        <center>
+          <Form style={{width:"50%"}}>
+          <InputGroup>
+          <InputGroupAddon>
+          <InputGroupText>StatCards</InputGroupText>
+          </InputGroupAddon>
+          <Input
+          type="select"
             className="form-control"
             id="statCardId"
             value={armyStatCards.id}
@@ -84,23 +97,29 @@ const ArmyListAddStatForm = props => {
             <option value={0}>select option</option>
             {statCards.map(statCard => (
               <option key={statCard.id} value={statCard.id}>
-                {statCard.name}
+                {statCard.name}{" "}
                 {statCard.unitSize}
               </option>
             ))}
-          </select>
-          <div className="alignRight">
-            <button
+          </Input>
+          
+          
+            <Button
               type="button"
               className="submitButton"
               disabled={isLoading}
               onClick={constructNewArmyStatCard}
             >
               Add Stat Card
-            </button>
-          </div>
-          <label htmlFor="armyType">Current Stat Cards</label>
-          <select
+            </Button>
+            </InputGroup>
+            <br/>
+          <InputGroup>
+          <InputGroupAddon>
+          <InputGroupText>Current Stat Cards</InputGroupText>
+          </InputGroupAddon>
+          <Input
+            type="select"
             className="form-control"
             id="id"
             value={currentArmyStatCards.id}
@@ -113,19 +132,27 @@ const ArmyListAddStatForm = props => {
                 {statCard.statCard.unitSize}
               </option>
             ))}
-          </select>
-          <div className="alignRight">
-            <button
+          </Input>
+          
+            <Button
               type="button"
               className="removeButton"
               disabled={isLoading}
               onClick={deletehandler}
             >
               Remove Stat Card
-            </button>
-          </div>
+            </Button>
+          
+          </InputGroup>
+          </Form>
+          <br/>
+          </center>
           <div className="container-cards">
-            <h2>My Army Stat Cards</h2>
+          <h1 style={{textAlign:"center"}}>Total Points: {totalPoints}</h1>
+            <h2 style={{textAlign:"center"}}>My Army Stat Cards</h2>
+            <CardGroup
+              style={{ display: "flex", justifyContent: "space-evenly" }}
+            >
             {currentArmyStatCards.map(currentArmyStatCard => (
               <StatCards
                 key={currentArmyStatCard.id}
@@ -133,8 +160,11 @@ const ArmyListAddStatForm = props => {
                 {...props}
               />
             ))}
+            </CardGroup>
           </div>
-        </div>
+        
+        
+        
       </div>
     </>
   );

@@ -1,11 +1,21 @@
 import React from "react";
 import {Link} from "react-router-dom"
+import {Button, ButtonGroup, Card, CardBody, CardHeader} from 'reactstrap'
+
 const ArmyListCard = props => {
   return (
+    <div>
+    <Card style={{margin:"5%"}}>
     <h4>
-      <Link to={`/army-lists/${props.armyList.id}/detail`}>
+      <CardHeader>
+      <Link to={`/army-lists/${props.armyList.id}/detail`} >
       {props.armyList.name}</Link> {props.armyList.maxPoints}
-      <button
+      </CardHeader>
+   </h4>
+   <CardBody>
+      <ButtonGroup>
+      <Button
+        size={"sm"}
         type="button"
         className="armyListEditButton"
         onClick={() =>
@@ -13,14 +23,16 @@ const ArmyListCard = props => {
         }
       >
         Edit
-      </button>
-      <button
+      </Button>
+      <Button
+      size={"sm"}
           type="button"
           onClick={() => props.deletehandler(props.armyList.id, "armies")}
         >
           Delete
-        </button>
-        <button
+        </Button>
+        <Button
+        size={"sm"}
         type="button"
         className="armyListAddStatCardButton"
         onClick={() =>
@@ -28,8 +40,11 @@ const ArmyListCard = props => {
         }
       >
         Add/Remove Stat Cards
-      </button>
-    </h4>
+      </Button>
+      </ButtonGroup>
+      </CardBody>
+      </Card>
+      </div>
   );
 };
 export default ArmyListCard;

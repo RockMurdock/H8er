@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import {default as H8er} from "./components/H8er";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render((

@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
 import API from "../../modules/ApiManager";
+import {
+  Form,
+  Button,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText
+} from "reactstrap";
 
 const SpecialRuleForm = props => {
   const [specialRule, setSpecialRule] = useState({
@@ -42,63 +50,68 @@ const SpecialRuleForm = props => {
   return (
     <>
       <div className="specialRules-content">
-        <div>
-          <label htmlFor="armyType">Army Type</label>
-          <select
-            className="form-control"
-            id="armyTypeId"
-            value={specialRule.armyTypeId}
-            onChange={handleFieldChange}
-          >
-            <option value={0}>select option</option>
-            {armyTypes.map(armyType => (
-              <option key={armyType.id} value={armyType.id}>
-                {armyType.name}
-              </option>
-            ))}
-          </select>
-          <table id="specialRules">
-            <tbody>
-              <tr>
-                <th>Name</th>
-                <td>
-                  <input
-                    type="text"
-                    required
-                    onChange={handleFieldChange}
-                    id="name"
-                    placeholder="Name of Special Rule"
-                    value={specialRule.name}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>Description</th>
-                <td>
-                  <textarea
-                    required
-                    onChange={handleFieldChange}
-                    id="description"
-                    placeholder="Description of Rule"
-                    value={specialRule.description}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div>
-            <div className="alignRight">
-              <button
-                type="button"
-                className="submitButton"
-                disabled={isLoading}
-                onClick={constructNewSpecialRule}
+        <br />
+        <center>
+          <Form style={{ width: "50%" }}>
+            <InputGroup>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>Army Type</InputGroupText>
+              </InputGroupAddon>
+              <Input
+                type="select"
+                className="form-control"
+                id="armyTypeId"
+                value={specialRule.armyTypeId}
+                onChange={handleFieldChange}
               >
-                Create Special Rule
-              </button>
-            </div>
-          </div>
-        </div>
+                <option value={0}>select option</option>
+                {armyTypes.map(armyType => (
+                  <option key={armyType.id} value={armyType.id}>
+                    {armyType.name}
+                  </option>
+                ))}
+              </Input>
+            </InputGroup>
+            <br />
+            <InputGroup>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>Name</InputGroupText>
+              </InputGroupAddon>
+              <Input
+                type="text"
+                required
+                onChange={handleFieldChange}
+                id="name"
+                placeholder="Name of Special Rule"
+                value={specialRule.name}
+              />
+            </InputGroup>
+            <br />
+            <InputGroup>
+              <InputGroupAddon>
+                <InputGroupText>Description</InputGroupText>
+              </InputGroupAddon>
+              <Input
+                type="textarea"
+                required
+                onChange={handleFieldChange}
+                id="description"
+                placeholder="Description of Rule"
+                value={specialRule.description}
+              />
+            </InputGroup>
+            <br />
+
+            <Button
+              type="button"
+              className="submitButton"
+              disabled={isLoading}
+              onClick={constructNewSpecialRule}
+            >
+              Create Special Rule
+            </Button>
+          </Form>
+        </center>
       </div>
     </>
   );

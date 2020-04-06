@@ -5,13 +5,13 @@ import RegisterForm from "./auth/RegisterForm";
 import StatCardsList from "./statCards/StatCardsList";
 import StatCardForm from "./statCards/StatCardForm";
 import StatCardEditForm from "./statCards/StatCardEditForm";
-import SpecialRuleForm from "./statCards/SpecialRuleForm"
-import SpecialRuleEditForm from "./statCards/SpecialRuleEditForm"
+import SpecialRuleForm from "./statCards/SpecialRuleForm";
+import SpecialRuleEditForm from "./statCards/SpecialRuleEditForm";
 import StatCardAddRuleForm from "./statCards/StatCardAddRuleForm";
-import ArmyListList from "./armyLists/ArmyListList"
-import ArmyListForm from "./armyLists/ArmyListForm"
+import ArmyListList from "./armyLists/ArmyListList";
+import ArmyListForm from "./armyLists/ArmyListForm";
 import ArmyListEditForm from "./armyLists/ArmyListEditForm";
-import ArmyListAddStatForm from "./armyLists/ArmyListAddStatForm"
+import ArmyListAddStatForm from "./armyLists/ArmyListAddStatForm";
 import SpecialRuleDetail from "./statCards/SpecialRuleDetail";
 import ArmyListDetail from "./armyLists/ArmyListDetail";
 
@@ -29,6 +29,7 @@ const AppViews = props => {
         }}
       />
       <Route
+        exact
         path="/register"
         render={props => {
           return <RegisterForm setUser={setUser} {...props} />;
@@ -49,11 +50,11 @@ const AppViews = props => {
         exact
         path="/stats/new-stat"
         render={props => {
-            if(hasUser){
-          return <StatCardForm {...props} />;
-        } else {
-            return <Redirect to="/login"/>
-        }
+          if (hasUser) {
+            return <StatCardForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
@@ -144,7 +145,7 @@ const AppViews = props => {
           }
         }}
       />
-        <Route
+      <Route
         exact
         path="/army-lists/:armyListId(\d+)/edit-armylist"
         render={props => {
