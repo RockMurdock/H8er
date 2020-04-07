@@ -5,15 +5,15 @@ import RegisterForm from "./auth/RegisterForm";
 import StatCardsList from "./statCards/StatCardsList";
 import StatCardForm from "./statCards/StatCardForm";
 import StatCardEditForm from "./statCards/StatCardEditForm";
-import SpecialRuleForm from "./statCards/SpecialRuleForm";
-import SpecialRuleEditForm from "./statCards/SpecialRuleEditForm";
+import SpecialRuleForm from "./specialRule/SpecialRuleForm";
+import SpecialRuleEditForm from "./specialRule/SpecialRuleEditForm";
 import StatCardAddRuleForm from "./statCards/StatCardAddRuleForm";
 import ArmyListList from "./armyLists/ArmyListList";
 import ArmyListForm from "./armyLists/ArmyListForm";
 import ArmyListEditForm from "./armyLists/ArmyListEditForm";
 import ArmyListAddStatForm from "./armyLists/ArmyListAddStatForm";
-import SpecialRuleDetail from "./statCards/SpecialRuleDetail";
 import ArmyListDetail from "./armyLists/ArmyListDetail";
+import SpecialRuleList from "./specialRule/SpecialRuleList";
 
 const AppViews = props => {
   const hasUser = props.hasUser;
@@ -70,7 +70,7 @@ const AppViews = props => {
       />
       <Route
         exact
-        path="/stats/new-rule"
+        path="/special-rules/new-rule"
         render={props => {
           if (hasUser) {
             return <SpecialRuleForm {...props} />;
@@ -81,7 +81,7 @@ const AppViews = props => {
       />
       <Route
         exact
-        path="/stats/:specialRuleId(\d+)/edit-rule"
+        path="/special-rules/:specialRuleId(\d+)/edit-rule"
         render={props => {
           if (hasUser) {
             return <SpecialRuleEditForm {...props} />;
@@ -92,10 +92,10 @@ const AppViews = props => {
       />
       <Route
         exact
-        path="/stats/:armyTypeId(\d+)/:specialRuleId(\d+)"
+        path="/special-rules"
         render={props => {
           if (hasUser) {
-            return <SpecialRuleDetail {...props} />;
+            return <SpecialRuleList {...props} />;
           } else {
             return <Redirect to="/login" />;
           }

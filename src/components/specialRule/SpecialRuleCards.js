@@ -20,7 +20,7 @@ const SpecialRuleCards = props => {
               type="button"
               className="specialRulesCardEditButton"
               onClick={() =>
-                props.history.push(`/stats/${props.specialRule.id}/edit-rule`)
+                props.history.push(`/special-rules/${props.specialRule.id}/edit-rule`)
               }
             >
               Edit
