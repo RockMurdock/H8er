@@ -36,7 +36,7 @@ const SpecialRuleForm = props => {
       setIsLoading(false);
     } else {
       API.save(specialRule, "specialRules").then(() =>
-        props.history.push("/stats")
+        props.history.push("/special-rules")
       );
     }
   };

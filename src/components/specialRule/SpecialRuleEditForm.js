@@ -33,7 +33,7 @@ const SpecialRuleEditForm = props => {
       armyTypeId: parseFloat(specialRule.armyTypeId)
     };
 
-    API.update(editedSpecialRule, "specialRules").then(() => props.history.push("/stats"));
+    API.update(editedSpecialRule, "specialRules").then(() => props.history.push("/special-rules"));
 }
   useEffect(() => {
     API.get("armyTypes").then(armyType => {
