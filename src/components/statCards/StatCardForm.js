@@ -68,7 +68,7 @@ const StatCardForm = props => {
 
   return (
     <>
-      <div className="statCards-content">
+      <div className="statCards-content" style={{backgroundColor:"#DCDCDC"}}>
         <div>
           <center>
             <br/>
@@ -117,7 +117,7 @@ const StatCardForm = props => {
 
               
                 <FormGroup >
-                <Table  style={{width:"50%" }} striped id="statCards">
+                <Table dark  style={{width:"50%" }} striped id="statCards">
                   <tbody>
                     <tr>
                       <th>PPM</th>

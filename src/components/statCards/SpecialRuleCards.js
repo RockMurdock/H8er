@@ -15,6 +15,7 @@ const SpecialRuleCards = props => {
           <CardText style={{width:"300px"}}>{props.specialRule.description}</CardText>
           <ButtonGroup>
             <Button
+            style={{ backgroundColor:"#A9A9A9"}}
               size="sm"
               type="button"
               className="specialRulesCardEditButton"

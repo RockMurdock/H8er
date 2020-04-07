@@ -25,11 +25,12 @@ const StatCardsList = props => {
 
   return (
     <>
-      <div>
+      <div style={{backgroundColor:"#DCDCDC"}}>
         <div>
           <h1 style={{ textAlign: "center" }}>List of Stat Cards</h1>
           <center>
             <Button
+            style={{backgroundColor:"#505050"}}
               size="sm"
               type="button"
               className="addStatCard"
@@ -317,6 +318,7 @@ const StatCardsList = props => {
           <h1 style={{ textAlign: "center" }}>List of Special Rules</h1>
           <center>
             <Button
+            style={{backgroundColor:"#505050"}}
               size="sm"
               type="button"
               className="addSection"

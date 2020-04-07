@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import API from "../../modules/ApiManager";
-import { Link } from "react-router-dom"
-import {Button, Input, InputGroup, InputGroupAddon, InputGroupText, Form} from 'reactstrap'
+import { Link } from "react-router-dom";
+import {
+  Button,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Form
+} from "reactstrap";
 
 const RegisterForm = props => {
   const [credentials, setCredentials] = useState({
@@ -23,7 +30,9 @@ const RegisterForm = props => {
         setCredentials("credentials");
         API.save(credentials, "users");
         API.get("users").then(users => {
-          const newUser = users.find(newUser => newUser.email === credentials.email);
+          const newUser = users.find(
+            newUser => newUser.email === credentials.email
+          );
           sessionStorage.setItem("userId", newUser.id);
           props.setUser(credentials);
           props.history.push("/army-lists");
@@ -36,50 +45,53 @@ const RegisterForm = props => {
 
   return (
     <>
-    <div className="loginForm">
-      <div>
-        <center>
-          <br/>
-          <Form style={{width:"50%", border:"solid 1px", padding:"5px"}}>
-        <h3>Sign up</h3>
-        <br/>
-        <InputGroup>
-        <InputGroupAddon addonType="prepend">
-        <InputGroupText>Username:</InputGroupText>
-        </InputGroupAddon>
-        <Input
-          onChange={handleFieldChange}
-          type="username"
-          id="username"
-          placeholder="username"
-        ></Input>
-        </InputGroup>
-        <br/>
-        <InputGroup>
-        <InputGroupAddon addonType="prepend">
-        <InputGroupText>Email Address:</InputGroupText>
-        </InputGroupAddon>
-        <Input
-          onChange={handleFieldChange}
-          type="email"
-          id="email"
-          placeholder="email address"
-        ></Input>
-       </InputGroup>
-       <br/>
-          <Button type="button" onClick={handleRegister}>
-            Submit
-          </Button>
-        <p>
-        Already a user? <span></span>
-        <Link to="/login"  className="signLink" style={{ textDecoration: 'none'}} >
-            
-            Click here
-          </Link>
-          </p>
-          </Form>
+      <div className="loginForm" style={{backgroundColor:"#DCDCDC"}}>
+        <div>
+          <center>
+            <br />
+            <Form style={{ width: "50%", border: "solid 1px", padding: "5px" }}>
+              <h3>Sign up</h3>
+              <br />
+              <InputGroup>
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText>Username:</InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  onChange={handleFieldChange}
+                  type="username"
+                  id="username"
+                  placeholder="username"
+                ></Input>
+              </InputGroup>
+              <br />
+              <InputGroup>
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText>Email Address:</InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  onChange={handleFieldChange}
+                  type="email"
+                  id="email"
+                  placeholder="email address"
+                ></Input>
+              </InputGroup>
+              </Form>
+              <br />
+              <Button type="button" onClick={handleRegister}>
+                Submit
+              </Button>
+              <p>
+                Already a user? <span></span>
+                <Link
+                  to="/login"
+                  className="signLink"
+                  style={{ textDecoration: "none" }}
+                >
+                  Click here
+                </Link>
+              </p>
           </center>
-      </div>
+        </div>
       </div>
     </>
   );

@@ -49,7 +49,7 @@ const SpecialRuleForm = props => {
 
   return (
     <>
-      <div className="specialRules-content">
+      <div className="specialRules-content" style={{backgroundColor:"#DCDCDC"}}>
         <br />
         <center>
           <Form style={{ width: "50%" }}>
@@ -88,7 +88,7 @@ const SpecialRuleForm = props => {
             </InputGroup>
             <br />
             <InputGroup>
-              <InputGroupAddon>
+              <InputGroupAddon addonType="prepend">
                 <InputGroupText>Description</InputGroupText>
               </InputGroupAddon>
               <Input

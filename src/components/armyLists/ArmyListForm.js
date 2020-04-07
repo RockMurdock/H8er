@@ -53,11 +53,11 @@ const ArmyListForm = props => {
 
   return (
     <>
-      <center>
+      <center style={{backgroundColor:"#DCDCDC"}}>
         <br />
         <Form style={{ width: "50%" }}>
           <InputGroup>
-            <InputGroupAddon>
+            <InputGroupAddon addonType="prepend">
               <InputGroupText>Army Type</InputGroupText>
             </InputGroupAddon>
             <Input
@@ -77,7 +77,7 @@ const ArmyListForm = props => {
           </InputGroup>
           <br />
           <InputGroup>
-            <InputGroupAddon>
+            <InputGroupAddon addonType="prepend">
               <InputGroupText>Army Name</InputGroupText>
             </InputGroupAddon>
             <Input
@@ -90,7 +90,7 @@ const ArmyListForm = props => {
           </InputGroup>
           <br />
           <InputGroup>
-            <InputGroupAddon>
+            <InputGroupAddon addonType="prepend">
               <InputGroupText>Max Points</InputGroupText>
             </InputGroupAddon>
             <Input

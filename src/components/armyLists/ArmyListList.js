@@ -25,11 +25,12 @@ const ArmyListList = props => {
   }, []);
 
   return (
-    <div>
+    <div style={{backgroundColor:"#DCDCDC"}}>
       <div>
-        <center>
-          <h1>Army Lists</h1>
+          <h1 style={{textAlign:"center"}}>Army Lists</h1>
+          <center>
           <Button
+          style={{backgroundColor:"#505050"}}
             size="sm"
             type="button"
             className="addSection"
@@ -38,9 +39,10 @@ const ArmyListList = props => {
             }}
           >
             Add Army List
-          </Button>
+          </Button >
+          </center>
           <div className="container-cards">
-            <h2>Orcs and Goblins</h2>
+            <h2 style={{textAlign:"center"}}>Orcs and Goblins</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -57,7 +59,7 @@ const ArmyListList = props => {
             </CardGroup>
           </div>
           <div className="container-cards">
-            <h2>Empire</h2>
+            <h2 style={{textAlign:"center"}}>Empire</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -73,7 +75,7 @@ const ArmyListList = props => {
             )}
             </CardGroup>
           </div>
-          <h2>Beastmen</h2>
+          <h2 style={{textAlign:"center"}}>Beastmen</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -88,7 +90,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Bretonnia</h2>
+            <h2 style={{textAlign:"center"}}>Bretonnia</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -103,7 +105,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Daemons of Chaos</h2>
+            <h2 style={{textAlign:"center"}}>Daemons of Chaos</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -118,7 +120,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Dark Elves</h2>
+            <h2 style={{textAlign:"center"}}>Dark Elves</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -133,7 +135,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Dogs of War</h2>
+            <h2 style={{textAlign:"center"}}>Dogs of War</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -148,7 +150,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Dwarfs</h2>
+            <h2 style={{textAlign:"center"}}>Dwarfs</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -163,7 +165,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>High Elves</h2>
+            <h2 style={{textAlign:"center"}}>High Elves</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -178,7 +180,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Lizardmen</h2>
+            <h2 style={{textAlign:"center"}}>Lizardmen</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -193,7 +195,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Ogre Kingdoms</h2>
+            <h2 style={{textAlign:"center"}}>Ogre Kingdoms</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -208,7 +210,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Skaven</h2>
+            <h2 style={{textAlign:"center"}}>Skaven</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -223,7 +225,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Tomb Kings</h2>
+            <h2 style={{textAlign:"center"}}>Tomb Kings</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -238,7 +240,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Vampire Counts</h2>
+            <h2 style={{textAlign:"center"}}>Vampire Counts</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -253,7 +255,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Warriors of Chaos</h2>
+            <h2 style={{textAlign:"center"}}>Warriors of Chaos</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -268,7 +270,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-            <h2>Wood Elves</h2>
+            <h2 style={{textAlign:"center"}}>Wood Elves</h2>
             <CardGroup
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
@@ -283,7 +285,7 @@ const ArmyListList = props => {
               ) : null
             )}
             </CardGroup>
-        </center>
+        
       </div>
     </div>
   );

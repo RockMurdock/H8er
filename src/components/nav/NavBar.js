@@ -10,14 +10,14 @@ const NavBar = props => {
 
   return (
     <div>
-    <Navbar color="light" style={{justifyContent:"center"}}>
+    <Navbar style={{justifyContent:"center", backgroundColor:"#484848"}}>
     <Nav pills>
       {props.hasUser ? (
         
           <>
           <NavItem>
             <NavLink 
-            style={{color:"black"}}
+            style={{color:"white"}}
               className="nav-link"
               href="/army-lists"
             >
@@ -26,7 +26,7 @@ const NavBar = props => {
           </NavItem>
           <NavItem>
             <NavLink
-            style={{color:"black"}}
+            style={{color:"white"}}
               className="nav-link"
               href="/stats"
             >
@@ -34,7 +34,7 @@ const NavBar = props => {
             </NavLink>
           </NavItem>
           <NavItem >
-            <span className="nav-link" onClick={handleLogout}>
+            <span style={{color:"white"}} className="nav-link" onClick={handleLogout}>
               {" "}
               Logout{" "}
             </span>

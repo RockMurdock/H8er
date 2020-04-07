@@ -79,12 +79,12 @@ const ArmyListAddStatForm = props => {
 
   return (
     <>
-      <div className="statCards-content">
+      <div className="statCards-content" style={{backgroundColor:"#DCDCDC"}}>
         <br/>
         <center>
           <Form style={{width:"50%"}}>
           <InputGroup>
-          <InputGroupAddon>
+          <InputGroupAddon addonType="prepend">
           <InputGroupText>StatCards</InputGroupText>
           </InputGroupAddon>
           <Input
@@ -115,7 +115,7 @@ const ArmyListAddStatForm = props => {
             </InputGroup>
             <br/>
           <InputGroup>
-          <InputGroupAddon>
+          <InputGroupAddon addonType="prepend">
           <InputGroupText>Current Stat Cards</InputGroupText>
           </InputGroupAddon>
           <Input

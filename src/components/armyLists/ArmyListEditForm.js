@@ -56,11 +56,12 @@ const ArmyListEditForm = props => {
 
   return (
     <>
-      <center>
+    <div style={{backgroundColor:"#DCDCDC"}}>
+      <center >
         <br />
         <Form style={{ width: "50%" }}>
           <InputGroup>
-            <InputGroupAddon>
+            <InputGroupAddon addonType="prepend">
               <InputGroupText>Army Type</InputGroupText>
             </InputGroupAddon>
             <Input
@@ -79,7 +80,7 @@ const ArmyListEditForm = props => {
           </InputGroup>
           <br />
           <InputGroup>
-            <InputGroupAddon>
+            <InputGroupAddon addonType="prepend">
               <InputGroupText>Army Name</InputGroupText>
             </InputGroupAddon>
             <Input
@@ -93,7 +94,7 @@ const ArmyListEditForm = props => {
           </InputGroup>
           <br />
           <InputGroup>
-            <InputGroupAddon>
+            <InputGroupAddon addonType="prepend">
               <InputGroupText>Max Points</InputGroupText>
             </InputGroupAddon>
             <Input
@@ -112,10 +113,11 @@ const ArmyListEditForm = props => {
             disabled={isLoading}
             onClick={updateExistingArmyList}
           >
-            Create Army List
+            Edit Army List
           </Button>
         </Form>
       </center>
+      </div>
     </>
   );
 };

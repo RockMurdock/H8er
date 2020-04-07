@@ -28,8 +28,6 @@ const Login = props => {
           user.email === credentials.email &&
           user.username === credentials.username
       );
-      console.log(credentials)
-      debugger
       if (user !== undefined) {
         sessionStorage.setItem("userId", user.id);
         props.setUser(credentials);
@@ -41,7 +39,7 @@ const Login = props => {
   };
   return (
     <>
-      <div className="loginForm">
+      <div className="loginForm" style={{backgroundColor:"#DCDCDC"}}>
         <div>
           <br />
           <center>
@@ -71,6 +69,7 @@ const Login = props => {
                   placeholder="username"
                 ></Input>
               </InputGroup>
+              </Form>
               <br />
               <Button type="submit" onClick={handleLogin}>
                 Submit
@@ -85,7 +84,7 @@ const Login = props => {
                   Sign up
                 </Link>{" "}
               </p>
-            </Form>
+            
           </center>
         </div>
       </div>

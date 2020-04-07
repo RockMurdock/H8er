@@ -4,11 +4,10 @@ import {
   Table,
   Button,
   Form,
-  FormGroup,
   Input,
   InputGroup,
   InputGroupAddon,
-  InputGroupText
+  InputGroupText,
 } from "reactstrap";
 
 const StatCardEditForm = props => {
@@ -77,7 +76,7 @@ const StatCardEditForm = props => {
 
   return (
     <>
-      <div className="statCards-content">
+      <div className="statCards-content" style={{backgroundColor:"#DCDCDC"}}>
         <div>
           <center>
             <br />
@@ -101,29 +100,29 @@ const StatCardEditForm = props => {
                   ))}
                 </Input>
               </InputGroup>
-              <br/>
-              <InputGroup style={{width:"50%"}}>
-              <InputGroupAddon addonType="prepend">
-              <InputGroupText>Unit Type</InputGroupText>
-              </InputGroupAddon>
-              <Input
-                type="select"
-                className="form-control"
-                id="unitTypeId"
-                value={statCard.unitTypeId}
-                onChange={handleFieldChange}
-              >
-                <option value={0}>select option</option>
-                {unitTypes.map(unitType => (
-                  <option key={unitType.id} value={unitType.id}>
-                    {unitType.name}
-                  </option>
-                ))}
-              </Input>
+              <br />
+              <InputGroup style={{ width: "50%" }}>
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText>Unit Type</InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  type="select"
+                  className="form-control"
+                  id="unitTypeId"
+                  value={statCard.unitTypeId}
+                  onChange={handleFieldChange}
+                >
+                  <option value={0}>select option</option>
+                  {unitTypes.map(unitType => (
+                    <option key={unitType.id} value={unitType.id}>
+                      {unitType.name}
+                    </option>
+                  ))}
+                </Input>
               </InputGroup>
-              <br/>
+              <br />
               <div>
-                <Table striped style={{ width: "50%" }} id="statCards">
+                <Table dark striped style={{ width: "50%" }} id="statCards">
                   <tbody>
                     <tr>
                       <th>PPM</th>

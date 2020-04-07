@@ -22,7 +22,7 @@ const sum = currentArmyStatCards.map(statCard =>{
   }, [props.match.params.id]);
   return (
     <>
-      <div className="statCards-content">
+      <div className="statCards-content" style={{backgroundColor:"#DCDCDC"}}>
         <div>
           <div className="container-cards">
         <h1 style={{textAlign:"center"}}>Total Points: {totalPoints}</h1>

@@ -9,7 +9,7 @@ import {
   InputGroupText,
   CardGroup
 } from "reactstrap";
-import SpecialRuleCards from "../statCards/SpecialRuleCards"
+import SpecialRuleCards from "../statCards/SpecialRuleCards";
 
 const StatCardAddRuleForm = props => {
   const [statCardRules, setStatCardRules] = useState({
@@ -62,7 +62,8 @@ const StatCardAddRuleForm = props => {
     });
     if (rule === undefined) {
       API.save(statCardRules, "statCardRules").then(() =>
-        props.history.push("/stats")
+      API.getRulesByStatCard(props.match.params.statCardId).then(rules => {
+        setRulesOnStatCard(rules);})
       );
     } else {
       window.alert("Please select a valid option");
@@ -90,6 +91,7 @@ const StatCardAddRuleForm = props => {
   }, [props.match.params.statCardId]);
   return (
     <>
+    <div style={{backgroundColor:"#DCDCDC"}}>
       <center>
         <Form>
           <div className="specialRules-content">
@@ -156,27 +158,23 @@ const StatCardAddRuleForm = props => {
                 </Button>
               </InputGroupAddon>
             </InputGroup>
-            
           </div>
-          </Form>
-          </center>
-          <br/>
-          <div className="container-cards">
-            <h2 style={{textAlign:"center"}}>Current Special Rules</h2>
-            <CardGroup
-              style={{ display: "flex", justifyContent: "space-evenly" }}
-            >
-            {rulesOnStatCard.map(specialRule => (
-              <SpecialRuleCards
-                key={specialRule.id}
-                specialRule={specialRule.specialRule}
-                {...props}
-              />
-            ))}
-            </CardGroup>
-          </div>
-        
-      
+        </Form>
+      </center>
+      <br />
+      <div className="container-cards">
+        <h2 style={{ textAlign: "center" }}>Current Special Rules</h2>
+        <CardGroup style={{ display: "flex", justifyContent: "space-evenly" }}>
+          {rulesOnStatCard.map(specialRule => (
+            <SpecialRuleCards
+              key={specialRule.id}
+              specialRule={specialRule.specialRule}
+              {...props}
+            />
+          ))}
+        </CardGroup>
+      </div>
+      </div>
     </>
   );
 };

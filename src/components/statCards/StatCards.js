@@ -71,6 +71,7 @@ const StatCards = props => {
             <br/>
             <ButtonGroup>
               <Button
+              style={{backgroundColor:"#A9A9A9"}}
                 type="button"
                 className="statCardEditButton"
                 onClick={() =>
@@ -88,6 +89,7 @@ const StatCards = props => {
                 Delete
               </Button>
               <Button
+              style={{backgroundColor:"#686868"}}
                 type="button"
                 className="specialRuleAddButton"
                 onClick={() =>
