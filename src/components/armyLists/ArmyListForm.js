@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
 import API from "../../modules/ApiManager";
+import {
+  Button,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Form
+} from "reactstrap";
 
 const ArmyListForm = props => {
   const [armyList, setArmyList] = useState({
@@ -23,12 +31,18 @@ const ArmyListForm = props => {
     armyList.userId = parseFloat(sessionStorage.getItem("userId"));
     armyList.armyTypeId = parseFloat(armyList.armyTypeId);
     armyList.maxPoints = parseFloat(armyList.maxPoints);
-if(armyList.armyTypeId === 0 || armyList.name === "" || armyList.maxPoints === 0){
-  window.alert("please fill out all fields and select valid option")
-  setIsLoading(false)
-} else {
-    API.save(armyList, "armies").then(() => props.history.push("/army-lists"));
-}
+    if (
+      armyList.armyTypeId === 0 ||
+      armyList.name === "" ||
+      armyList.maxPoints === 0
+    ) {
+      window.alert("please fill out all fields and select valid option");
+      setIsLoading(false);
+    } else {
+      API.save(armyList, "armies").then(() =>
+        props.history.push("/army-lists")
+      );
+    }
   };
   useEffect(() => {
     API.get("armyTypes").then(armyType => {
@@ -39,65 +53,65 @@ if(armyList.armyTypeId === 0 || armyList.name === "" || armyList.maxPoints === 0
 
   return (
     <>
-      <div className="statCards-content">
-        <div>
-          <label htmlFor="armyType">Army Type</label>
-          <select
-            className="form-control"
-            id="armyTypeId"
-            value={armyList.armyTypeId}
-            onChange={handleFieldChange}
+      <center style={{backgroundColor:"#DCDCDC"}}>
+        <br />
+        <Form style={{ width: "50%" }}>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>Army Type</InputGroupText>
+            </InputGroupAddon>
+            <Input
+              type="select"
+              className="form-control"
+              id="armyTypeId"
+              value={armyList.armyTypeId}
+              onChange={handleFieldChange}
+            >
+              <option value={0}>select option</option>
+              {armyTypes.map(armyType => (
+                <option key={armyType.id} value={armyType.id}>
+                  {armyType.name}
+                </option>
+              ))}
+            </Input>
+          </InputGroup>
+          <br />
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>Army Name</InputGroupText>
+            </InputGroupAddon>
+            <Input
+              type="text"
+              required
+              onChange={handleFieldChange}
+              id="name"
+              placeholder="Name of Army List"
+            />
+          </InputGroup>
+          <br />
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>Max Points</InputGroupText>
+            </InputGroupAddon>
+            <Input
+              type="number"
+              required
+              onChange={handleFieldChange}
+              id="maxPoints"
+              placeholder="Maximum Point Limit"
+            />
+          </InputGroup>
+          <br />
+          <Button
+            type="button"
+            className="submitButton"
+            disabled={isLoading}
+            onClick={constructNewArmyList}
           >
-            <option value={0}>select option</option>
-            {armyTypes.map(armyType => (
-              <option key={armyType.id} value={armyType.id}>
-                {armyType.name}
-              </option>
-            ))}
-          </select>
-
-          <div>
-            <table id="armyList">
-              <tbody>
-                <tr>
-                  <th>Army Name</th>
-                  <td>
-                    <input
-                      type="text"
-                      required
-                      onChange={handleFieldChange}
-                      id="name"
-                      placeholder="Name of Army List"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>Max Points</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="maxPoints"
-                      placeholder="Maximum Point Limit"
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="alignRight">
-              <button
-                type="button"
-                className="submitButton"
-                disabled={isLoading}
-                onClick={constructNewArmyList}
-              >
-                Create Army List
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+            Create Army List
+          </Button>
+        </Form>
+      </center>
     </>
   );
 };

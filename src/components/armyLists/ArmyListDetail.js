@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../../modules/ApiManager";
 import StatCards from "../statCards/StatCards";
+import {CardGroup} from "reactstrap"
 
 const ArmyListDetail = props => {
 
@@ -19,14 +20,16 @@ const sum = currentArmyStatCards.map(statCard =>{
       }
     );
   }, [props.match.params.id]);
-
   return (
     <>
-      <div className="statCards-content">
+      <div className="statCards-content" style={{backgroundColor:"#DCDCDC"}}>
         <div>
           <div className="container-cards">
-        <h1>Total Points: {totalPoints}</h1>
-            <h2>Lords</h2>
+        <h1 style={{textAlign:"center"}}>Total Points: {totalPoints}</h1>
+            <h2 style={{textAlign:"center"}}>Lords</h2>
+            <CardGroup
+              style={{ display: "flex", justifyContent: "space-evenly" }}
+            >
             {currentArmyStatCards.map(currentArmyStatCard => (
               currentArmyStatCard.statCard.unitTypeId === 1 ?(  
               <StatCards
@@ -35,9 +38,13 @@ const sum = currentArmyStatCards.map(statCard =>{
                 {...props}
               />) : null
             ))}
+            </CardGroup>
           </div>
           <div className="container-cards">
-            <h2>Heroes</h2>
+            <h2 style={{textAlign:"center"}}>Heroes</h2>
+            <CardGroup
+              style={{ display: "flex", justifyContent: "space-evenly" }}
+            >
             {currentArmyStatCards.map(currentArmyStatCard => (
               currentArmyStatCard.statCard.unitTypeId === 2 ?(  
               <StatCards
@@ -46,9 +53,13 @@ const sum = currentArmyStatCards.map(statCard =>{
                 {...props}
               />) : null
             ))}
+            </CardGroup>
           </div>
           <div className="container-cards">
-            <h2>Core</h2>
+            <h2 style={{textAlign:"center"}}>Core</h2>
+            <CardGroup
+              style={{ display: "flex", justifyContent: "space-evenly" }}
+            >
             {currentArmyStatCards.map(currentArmyStatCard => (
               currentArmyStatCard.statCard.unitTypeId === 3 ?(  
               <StatCards
@@ -57,9 +68,13 @@ const sum = currentArmyStatCards.map(statCard =>{
                 {...props}
               />) : null
             ))}
+            </CardGroup>
           </div>
           <div className="container-cards">
-            <h2>Special</h2>
+            <h2 style={{textAlign:"center"}}>Special</h2>
+            <CardGroup
+              style={{ display: "flex", justifyContent: "space-evenly" }}
+            >
             {currentArmyStatCards.map(currentArmyStatCard => (
               currentArmyStatCard.statCard.unitTypeId === 4 ?(  
               <StatCards
@@ -68,9 +83,13 @@ const sum = currentArmyStatCards.map(statCard =>{
                 {...props}
               />) : null
             ))}
+            </CardGroup>
           </div>
           <div className="container-cards">
-            <h2>Rare</h2>
+            <h2 style={{textAlign:"center"}}>Rare</h2>
+            <CardGroup
+              style={{ display: "flex", justifyContent: "space-evenly" }}
+            >
             {currentArmyStatCards.map(currentArmyStatCard => (
               currentArmyStatCard.statCard.unitTypeId === 1 ?(  
               <StatCards
@@ -79,6 +98,7 @@ const sum = currentArmyStatCards.map(statCard =>{
                 {...props}
               />) : null
             ))}
+            </CardGroup>
           </div>
         </div>
       </div>

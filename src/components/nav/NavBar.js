@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import {Navbar, Nav, NavItem, NavLink} from 'reactstrap'
 
 const NavBar = props => {
   const handleLogout = () => {
@@ -9,38 +9,42 @@ const NavBar = props => {
   };
 
   return (
-    <nav>
+    <div>
+    <Navbar style={{justifyContent:"center", backgroundColor:"#484848"}}>
+    <Nav pills>
       {props.hasUser ? (
-        <ul className="navList">
-          
-          <li>
-            <Link
+        
+          <>
+          <NavItem>
+            <NavLink 
+            style={{color:"white"}}
               className="nav-link"
-              style={{ textDecoration: "none", color: "#160D58" }}
-              to="/army-lists"
+              href="/army-lists"
             >
               Army Lists
-            </Link>
-          </li>
-          <li>
-            <Link
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+            style={{color:"white"}}
               className="nav-link"
-              style={{ textDecoration: "none", color: "#160D58" }}
-              to="/stats"
+              href="/stats"
             >
               Stat Cards
-            </Link>
-          </li>
-          <li>
-            <span className="nav-link" onClick={handleLogout}>
+            </NavLink>
+          </NavItem>
+          <NavItem >
+            <span style={{color:"white"}} className="nav-link" onClick={handleLogout}>
               {" "}
               Logout{" "}
             </span>
-          </li>
-          
-        </ul>
+          </NavItem>
+          </>
+        
       ) : null}
-    </nav>
+    </Nav>
+    </Navbar>
+    </div>
   );
 };
 

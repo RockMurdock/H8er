@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
 import API from "../../modules/ApiManager";
+import {
+  Button,
+  Form,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  CardGroup
+} from "reactstrap";
+import SpecialRuleCards from "../statCards/SpecialRuleCards";
 
 const StatCardAddRuleForm = props => {
   const [statCardRules, setStatCardRules] = useState({
@@ -52,7 +62,8 @@ const StatCardAddRuleForm = props => {
     });
     if (rule === undefined) {
       API.save(statCardRules, "statCardRules").then(() =>
-        props.history.push("/stats")
+      API.getRulesByStatCard(props.match.params.statCardId).then(rules => {
+        setRulesOnStatCard(rules);})
       );
     } else {
       window.alert("Please select a valid option");
@@ -80,68 +91,89 @@ const StatCardAddRuleForm = props => {
   }, [props.match.params.statCardId]);
   return (
     <>
-      <div className="specialRules-content">
-        <div>
-          <label htmlFor="armyType">Special Rules</label>
-          <select
-            className="form-control"
-            id="specialRuleId"
-            value={statCardRules.id}
-            onChange={handleFieldChange}
-          >
-            <option value={0}>select option</option>
-            {specialRules.map(specialRule => (
-              <option key={specialRule.id} value={specialRule.id}>
-                {specialRule.name}
-              </option>
-            ))}
-          </select>
-          <div>
-            <div className="alignRight">
-              <button
-                type="button"
-                className="submitButton"
-                disabled={isLoading}
-                onClick={constructNewSpecialRule}
+    <div style={{backgroundColor:"#DCDCDC"}}>
+      <center>
+        <Form>
+          <div className="specialRules-content">
+            <br />
+            <InputGroup style={{ width: "50%" }}>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>Special Rules</InputGroupText>
+              </InputGroupAddon>
+              <Input
+                type="select"
+                className="form-control"
+                id="specialRuleId"
+                value={statCardRules.id}
+                onChange={handleFieldChange}
               >
-                Add Special Rule
-              </button>
-            </div>
+                <option value={0}>select option</option>
+                {specialRules.map(specialRule => (
+                  <option key={specialRule.id} value={specialRule.id}>
+                    {specialRule.name}
+                  </option>
+                ))}
+              </Input>
+              <InputGroupAddon addonType="append">
+                <Button
+                  type="button"
+                  className="submitButton"
+                  disabled={isLoading}
+                  onClick={constructNewSpecialRule}
+                >
+                  {" "}
+                  Add Special Rule
+                </Button>
+              </InputGroupAddon>
+            </InputGroup>
           </div>
-        </div>
+          <br />
+          <div className="specialRules-content">
+            <InputGroup style={{ width: "50%" }}>
+              <InputGroupAddon addonType="prepend">
+                <InputGroupText>Current Special Rules</InputGroupText>
+              </InputGroupAddon>
+              <Input
+                type="select"
+                className="form-control"
+                id="id"
+                value={rulesOnStatCard.id}
+                onChange={handleFieldChangeToRemove}
+              >
+                <option value={0}>select option</option>
+                {rulesOnStatCard.map(specialRule => (
+                  <option key={specialRule.id} value={specialRule.id}>
+                    {specialRule.specialRule.name}
+                  </option>
+                ))}
+              </Input>
+              <InputGroupAddon addonType="append">
+                <Button
+                  type="button"
+                  className="removeButton"
+                  disabled={isLoading}
+                  onClick={deletehandler}
+                >
+                  Remove Special Rule
+                </Button>
+              </InputGroupAddon>
+            </InputGroup>
+          </div>
+        </Form>
+      </center>
+      <br />
+      <div className="container-cards">
+        <h2 style={{ textAlign: "center" }}>Current Special Rules</h2>
+        <CardGroup style={{ display: "flex", justifyContent: "space-evenly" }}>
+          {rulesOnStatCard.map(specialRule => (
+            <SpecialRuleCards
+              key={specialRule.id}
+              specialRule={specialRule.specialRule}
+              {...props}
+            />
+          ))}
+        </CardGroup>
       </div>
-      <div className="specialRules-content">
-        <div>
-          <label htmlFor="armyType">Current Special Rules</label>
-          <select
-            className="form-control"
-            id="id"
-            value={rulesOnStatCard.id}
-            onChange={handleFieldChangeToRemove}
-          >
-            <option value={0}>select option</option>
-            {rulesOnStatCard.map(specialRule => (
-              <option
-                key={specialRule.id}
-                value={specialRule.id}
-              >
-                {specialRule.specialRule.name}
-              </option>
-            ))}
-          </select>
-          <div>
-            <div className="alignRight">
-              <button
-                type="button"
-                className="removeButton"
-                disabled={isLoading}
-                onClick={deletehandler}
-              >
-                Remove Special Rule
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </>
   );

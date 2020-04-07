@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../../modules/ApiManager";
+import { Table, Button, Form, FormGroup, Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 
 const StatCardForm = props => {
   const [statCard, setStatCard] = useState({
@@ -44,11 +45,15 @@ const StatCardForm = props => {
     statCard.attacks = parseFloat(statCard.attacks);
     statCard.leadership = parseFloat(statCard.leadership);
 
-    if (statCard.armyTypeId === 0 || statCard.armyTypeId === 0 || statCard.name === ""){
-      window.alert("please choose a valid option")
-      setIsLoading(false)
+    if (
+      statCard.armyTypeId === 0 ||
+      statCard.armyTypeId === 0 ||
+      statCard.name === ""
+    ) {
+      window.alert("please choose a valid option");
+      setIsLoading(false);
     } else {
-    API.save(statCard, "statCards").then(() => props.history.push("/stats"));
+      API.save(statCard, "statCards").then(() => props.history.push("/stats"));
     }
   };
   useEffect(() => {
@@ -63,196 +68,217 @@ const StatCardForm = props => {
 
   return (
     <>
-      <div className="statCards-content">
+      <div className="statCards-content" style={{backgroundColor:"#DCDCDC"}}>
         <div>
-          <label htmlFor="armyType">Army Type</label>
-          <select
-            className="form-control"
-            id="armyTypeId"
-            value={statCard.armyTypeId}
-            onChange={handleFieldChange}
-          >
-            <option value={0}>select option</option>
-            {armyTypes.map(armyType => (
-              <option key={armyType.id} value={armyType.id}>
-                {armyType.name}
-              </option>
-            ))}
-          </select>
-          <label htmlFor="unitType">Unit Type</label>
-          <select
-            className="form-control"
-            id="unitTypeId"
-            value={statCard.unitTypeId}
-            onChange={handleFieldChange}
-          >
-            <option value={0}>select option</option>
-            {unitTypes.map(unitType => (
-              <option key={unitType.id} value={unitType.id}>
-                {unitType.name}
-              </option>
-            ))}
-          </select>
-          <div>
-            <table id="statCards">
-              <tbody>
-                <tr>
-                  <th>PPM</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="pointsPerModel"
-                      placeholder="Points Per Model"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>Name</th>
-                  <td>
-                    <input
-                      type="text"
-                      required
-                      onChange={handleFieldChange}
-                      id="name"
-                      placeholder="Unit Name"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>M</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="movement"
-                      placeholder="Movement Speed"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>WS</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="weaponSkill"
-                      placeholder="Weapon Skill"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>BS</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="ballisticSkill"
-                      placeholder="Ballistic Skill"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>S</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="strength"
-                      placeholder="Strength"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>T</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="toughness"
-                      placeholder="Toughness"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>W</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="wounds"
-                      placeholder="Wounds"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>I</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="initiative"
-                      placeholder="Initiative"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>A</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="attacks"
-                      placeholder="Attacks"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>LD</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="leadership"
-                      placeholder="Leadership"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th>US</th>
-                  <td>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleFieldChange}
-                      id="unitSize"
-                      placeholder="Unit Size"
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="alignRight">
-              <button
-                type="button"
-                className="submitButton"
-                disabled={isLoading}
-                onClick={constructNewStatCard}
+          <center>
+            <br/>
+            <Form style={{ width: "50%" }}>
+              <InputGroup style={{width:"50%"}}>
+              <InputGroupAddon addonType="prepend">
+              <InputGroupText>Army Type</InputGroupText>
+              </InputGroupAddon>
+              <Input
+                type="select"
+                className="form-control"
+                id="armyTypeId"
+                value={statCard.armyTypeId}
+                onChange={handleFieldChange}
               >
-                Create Stat Card
-              </button>
-            </div>
-          </div>
+                <option value={0}>select option</option>
+                {armyTypes.map(armyType => (
+                  <option key={armyType.id} value={armyType.id}>
+                    {armyType.name}
+                  </option>
+                ))}
+              </Input>
+              </InputGroup>
+              
+              <br/>
+              <InputGroup style={{width:"50%"}}>
+              <InputGroupAddon addonType="prepend">
+              <InputGroupText>Unit Type</InputGroupText>
+              </InputGroupAddon>
+              <Input
+                type="select"
+                className="form-control"
+                id="unitTypeId"
+                value={statCard.unitTypeId}
+                onChange={handleFieldChange}
+              >
+                <option value={0}>select option</option>
+                {unitTypes.map(unitType => (
+                  <option key={unitType.id} value={unitType.id}>
+                    {unitType.name}
+                  </option>
+                ))}
+              </Input>
+              </InputGroup>
+              <br/>
+
+              
+                <FormGroup >
+                <Table dark  style={{width:"50%" }} striped id="statCards">
+                  <tbody>
+                    <tr>
+                      <th>PPM</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="pointsPerModel"
+                          placeholder="Points Per Model"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Name</th>
+                      <td>
+                        <input
+                          type="text"
+                          required
+                          onChange={handleFieldChange}
+                          id="name"
+                          placeholder="Unit Name"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>M</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="movement"
+                          placeholder="Movement Speed"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>WS</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="weaponSkill"
+                          placeholder="Weapon Skill"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>BS</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="ballisticSkill"
+                          placeholder="Ballistic Skill"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>S</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="strength"
+                          placeholder="Strength"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>T</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="toughness"
+                          placeholder="Toughness"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>W</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="wounds"
+                          placeholder="Wounds"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>I</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="initiative"
+                          placeholder="Initiative"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>A</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="attacks"
+                          placeholder="Attacks"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>LD</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="leadership"
+                          placeholder="Leadership"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>US</th>
+                      <td>
+                        <input
+                          type="number"
+                          required
+                          onChange={handleFieldChange}
+                          id="unitSize"
+                          placeholder="Unit Size"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+                </FormGroup>
+                <div className="alignRight">
+                  <Button
+                    type="button"
+                    className="submitButton"
+                    disabled={isLoading}
+                    onClick={constructNewStatCard}
+                  >
+                    Create Stat Card
+                  </Button>
+                </div>
+              
+            </Form>
+          </center>
         </div>
       </div>
     </>
