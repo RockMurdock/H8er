@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import API from "../../modules/ApiManager";
-import SpecialRule from "./SpecialRule";
+import SpecialRule from "../specialRule/SpecialRule";
 import {
   Table,
   Button,

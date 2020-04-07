@@ -91,7 +91,7 @@ const sum = currentArmyStatCards.map(statCard =>{
               style={{ display: "flex", justifyContent: "space-evenly" }}
             >
             {currentArmyStatCards.map(currentArmyStatCard => (
-              currentArmyStatCard.statCard.unitTypeId === 1 ?(  
+              currentArmyStatCard.statCard.unitTypeId === 5 ?(  
               <StatCards
                 key={currentArmyStatCard.id}
                 statCard={currentArmyStatCard.statCard}

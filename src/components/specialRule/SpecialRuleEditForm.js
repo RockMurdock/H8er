@@ -9,7 +9,7 @@ import {
   InputGroupText
 } from "reactstrap";
 
-const SpecialRuleForm = props => {
+const SpecialRuleEditForm = props => {
   const [specialRule, setSpecialRule] = useState({
     name: "",
     description: "",
@@ -23,29 +23,27 @@ const SpecialRuleForm = props => {
     stateToChange[evt.target.id] = evt.target.value;
     setSpecialRule(stateToChange);
   };
-  const constructNewSpecialRule = evt => {
+  const updateExistingSpecialRule = evt => {
     evt.preventDefault();
     setIsLoading(true);
-    specialRule.armyTypeId = parseFloat(specialRule.armyTypeId);
-    if (
-      specialRule.armyTypeId === 0 ||
-      specialRule.name === "" ||
-      specialRule.description === ""
-    ) {
-      window.alert("please fill out all fields and select valid option");
-      setIsLoading(false);
-    } else {
-      API.save(specialRule, "specialRules").then(() =>
-        props.history.push("/stats")
-      );
-    }
-  };
+    const editedSpecialRule = {
+      id: props.match.params.specialRuleId,
+      name: specialRule.name,
+      description: specialRule.description,
+      armyTypeId: parseFloat(specialRule.armyTypeId)
+    };
+
+    API.update(editedSpecialRule, "specialRules").then(() => props.history.push("/special-rules"));
+}
   useEffect(() => {
     API.get("armyTypes").then(armyType => {
-      setArmyType(armyType);
-      setIsLoading(false);
+        API.edit(props.match.params.specialRuleId, "specialRules").then(specialRule => {
+            setSpecialRule(specialRule)
+            setArmyType(armyType);
+            setIsLoading(false);
+        })
     });
-  }, []);
+  }, [props.match.params.specialRuleId]);
 
   return (
     <>
@@ -106,9 +104,9 @@ const SpecialRuleForm = props => {
               type="button"
               className="submitButton"
               disabled={isLoading}
-              onClick={constructNewSpecialRule}
+              onClick={updateExistingSpecialRule}
             >
-              Create Special Rule
+              Edit Special Rule
             </Button>
           </Form>
         </center>
@@ -116,4 +114,4 @@ const SpecialRuleForm = props => {
     </>
   );
 };
-export default SpecialRuleForm;
+export default SpecialRuleEditForm;

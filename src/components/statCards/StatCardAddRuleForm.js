@@ -9,7 +9,7 @@ import {
   InputGroupText,
   CardGroup
 } from "reactstrap";
-import SpecialRuleCards from "../statCards/SpecialRuleCards";
+import SpecialRuleCards from "../specialRule/SpecialRuleCards";
 
 const StatCardAddRuleForm = props => {
   const [statCardRules, setStatCardRules] = useState({
